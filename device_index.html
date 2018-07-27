@@ -31,8 +31,35 @@
 
     table.dataTable thead th, table.dataTable thead td {
         border-bottom: 0 !important;
-        background-color: #333 !important;
+        background-color: lightgray !important;
+      color: #333 !important;
+    }
+
+
+    .btn-custom
+    {
+      color: #333 !important;
+      border: 1px solid #979797 !important;
+      background-color: white !important;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fff), color-stop(100%, #dcdcdc)) !important;
+      background: -webkit-linear-gradient(top, #fff 0%, #dcdcdc 100%) !important;
+      background: -moz-linear-gradient(top, #fff 0%, #dcdcdc 100%) !important;
+      background: -ms-linear-gradient(top, #fff 0%, #dcdcdc 100%) !important;
+      background: -o-linear-gradient(top, #fff 0%, #dcdcdc 100%) !important;
+      background: linear-gradient(to bottom, #fff 0%, #dcdcdc 100%) !important;
+    }
+
+    .btn-custom:hover
+    {
       color: white !important;
+      border: 1px solid #111 !important;
+      background-color: #585858 !important;
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111)) !important;
+      background: -webkit-linear-gradient(top, #585858 0%, #111 100%) !important;
+      background: -moz-linear-gradient(top, #585858 0%, #111 100%) !important;
+      background: -ms-linear-gradient(top, #585858 0%, #111 100%) !important;
+      background: -o-linear-gradient(top, #585858 0%, #111 100%) !important;
+      background: linear-gradient(to bottom, #585858 0%, #111 100%) !important;
     }
   </style>
 
@@ -423,11 +450,14 @@
 
                       <div class="row py-3 my-3">
                           
-                          <div class="offset-lg-8 col-lg-2">
-                            <a type="button"  href="#" class="btn btn-block mb-2" ><i class="fa fa-file-archive-o" aria-hidden="true"></i> Registrar Equipo</a>
+                          <div class="offset-lg-6 col-lg-2">
+                            <button type="button" class="btn btn-block  btn-custom" ><i class="fa fa-file-archive-o" aria-hidden="true"></i> Registrar Equipo</button>
                           </div>
                           <div class="col-lg-2">
-                            <a type="button" href="#" class="btn btn-block mb-2" ><i class="fa fa-edit" aria-hidden="true"></i> Editar Equipo</a>
+                            <button type="button" id="btn-device-details"  class="btn btn-block  btn-custom" ><i class="fa fa-eye" aria-hidden="true"></i> Ver Detalle del Equipo</button>
+                            </div>
+                          <div class="col-lg-2">
+                            <button type="button" id="btn-device-edit" class="btn btn-block  btn-custom" ><i class="fa fa-edit" aria-hidden="true"></i> Editar Equipo</button>
                           </div>
                           
                       </div>
@@ -904,7 +934,7 @@
                                   <td>$112,000</td>
                               </tr>
                           </tbody>
-                          <tfoot>
+                          <!--<tfoot>
                               <tr>
                                   <th>Name</th>
                                   <th>Position</th>
@@ -913,7 +943,7 @@
                                   <th>Start date</th>
                                   <th>Salary</th>
                               </tr>
-                          </tfoot>
+                          </tfoot>-->
                       </table>
                   </div>
                 </div>
@@ -948,6 +978,9 @@
 <!-- DataTable -->
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 
+<!-- SweetAlert-->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <!-- JS Custom -->
 <script src="assets/custom/1.0.0/js/bootstrap.min.js"></script>
 <script src="assets/custom/1.0.0/js/script.js"></script>
@@ -957,11 +990,33 @@
 
 <script>
   $(document).ready(function() {
+
+
     $('#example').DataTable( {
         /*scrollY:        '50vh',*/
         scrollCollapse: true,
-        paging:         true
+        paging:         true,
+        select: true
     } );
+
+    
+
+
+
+    
+
+
+    $( "#btn-device-edit" ).click(function() {
+      swal("Good job!", "You clicked the button!", "success");
+    });
+
+    $( "#btn-device-details" ).click(function() {
+      swal("Oops!", "Primero debes seleccionar un equipo para ver sus detalles.", "warning");
+    });
+
+
+
+
 } );
 </script>
 </body>
